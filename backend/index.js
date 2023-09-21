@@ -5,7 +5,7 @@ const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const path = require('path')
 
-//Connect to the database
+mongoose.set('strictQuery', true);
 const db = require("./models");
 db.mongoose
   .connect(db.url, {
@@ -21,7 +21,6 @@ db.mongoose
   });
   
   
-
 const app = express()
 app.use(bodyParser.json())
 app.use(

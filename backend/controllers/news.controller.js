@@ -36,55 +36,41 @@ router.post('/news', upload.single('newsImage'), async (req, res) => {
     res.status(500).json({ message: 'Internal server error' });
   }
 });
-//Get all news
-// Get news articles with filtering, sorting, and pagination
+
+// Get filtered news articles
 router.get('/news', async (req, res) => {
+  const { searchQuery, sortOption, articlesPerPage, languageFilter, page } = req.query;
+  let query = NewsModel.find();
+
+  if (searchQuery) {
+    query = query.find({
+      $or: [
+        { title: { $regex: searchQuery, $options: 'i' } },
+        { content: { $regex: searchQuery, $options: 'i' } },
+      ],
+    });
+  }
+  
+  if (languageFilter !== 'All') {
+    query = query.where('language').equals(languageFilter);
+  }
+
+  const sortOrder = sortOption === 'newest' ? -1 : 1;
+  query = query.sort({ date: sortOrder });
+  
+  const startIndex = (page - 1) * articlesPerPage;
+  const endIndex = page * articlesPerPage;
+  
   try {
-    // Define query parameters
-    const { searchTitle, language, sortBy, sortOrder, page, perPage } = req.query;
+    const articles = await query.skip(startIndex).limit(articlesPerPage).exec();
 
-    // Build the filter criteria
-    const filter = {};
-    if (searchTitle) {
-      filter.title = { $regex: searchTitle, $options: 'i' }; // Case-insensitive title search
-    }
-    if (language) {
-      filter.language = language;
-    }
-
-    // Build the sort options
-    const sort = {};
-    if (sortBy && sortOrder) {
-      sort[sortBy] = sortOrder === 'asc' ? 1 : -1;
-    } else {
-      // Default sorting by date in descending order (latest first)
-      sort.date = -1;
-    }
-
-    // Parse pagination parameters
-    const parsedPage = parseInt(page) || 1;
-    const parsedPerPage = parseInt(perPage) || 10; // Default to 10 posts per page
-
-    // Calculate skip value for pagination
-    const skip = (parsedPage - 1) * parsedPerPage;
-
-    // Query the news articles based on the filter, sort, and pagination
-    const newsArticles = await NewsModel.find(filter)
-      .sort(sort)
-      .skip(skip)
-      .limit(parsedPerPage);
-
-    // Count the total number of matching news articles
-    const totalNewsCount = await NewsModel.countDocuments(filter);
-
-    // Calculate total pages
-    const totalPages = Math.ceil(totalNewsCount / parsedPerPage);
+    const totalArticles = await NewsModel.countDocuments(query._conditions).exec();
 
     res.json({
-      newsArticles,
-      totalNewsCount,
-      totalPages,
-      currentPage: parsedPage,
+      articles,
+      currentPage: page,
+      totalArticles:totalArticles,
+      totalPages: Math.ceil(totalArticles / articlesPerPage),
     });
   } catch (error) {
     console.error(error);
@@ -103,14 +89,12 @@ router.route('/news/:id').get((req, res, next) => {
   })
 })
 
-
 // Get the latest 3 news articles
 router.get('/suggested-articles', async (req, res) => {
   try {
-    // Find the latest 3 news articles based on the date
     const latestArticles = await NewsModel.find()
-      .sort({ date: -1 }) // Sort by date in descending order (latest first)
-      .limit(3); // Limit to 3 articles
+      .sort({ date: -1 })
+      .limit(3);
 
     res.json(latestArticles);
   } catch (error) {
