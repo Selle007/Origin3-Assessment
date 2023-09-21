@@ -4,3 +4,38 @@
     font-size: 1.5rem;
     margin-right: 0.25rem;
   }
+  
+  .redtext {
+    width: 521px;
+    color: #F00;
+    font-size: 140px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 106px; /* 75.714% */
+
+  }
+  
+  .textdown {
+    color: #000;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 150% */
+  }
+  
+  .welcome {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 18px;
+    letter-spacing: 0px;
+    text-align: left;
+  }
+  .welcome::before {
+    content: "";
+    display: inline-block;
+    width: 24px;
+    height: 1px; /* Adjust the height as needed */
+    background-color: #71717A; /* Adjust the color as needed */
+    margin-bottom: 4px; /* Adjust the spacing between the dash and text */
+    vertical-align: middle;
+  }

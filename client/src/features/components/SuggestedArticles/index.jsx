@@ -16,7 +16,7 @@ export const SuggestedArticles = () => {
   }, []); 
   return (
     <div className=" mx-40 mt-24">
-      <div className="text-3xl leading-10 text-black bebas">READ ME</div>
+      <div className="text-3xl leading-10 text-black bebas">READ MORE</div>
       <div className="flex  gap-6 pt-8">
         <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6">
         {newsArticles.map((article) => (

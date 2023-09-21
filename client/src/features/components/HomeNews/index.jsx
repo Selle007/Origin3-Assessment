@@ -64,17 +64,17 @@ export const HomeNews = () => {
               type="text"
               id="Search"
               placeholder="Search news"
-              className="w-full border-gray-200 sm:text-sm pl-6 py-1 w-72 rounded leading-6 text-base"
+              className="border-gray-200 sm:text-sm pl-6 py-1 w-80 rounded leading-6 text-base"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
           </div>
         </div>
         <div className="flex justify-between">
-          <div className="flex font-normal">
+          <div className="flex font-normal items-center">
             <div className="leading-6 text-base">Lang:</div>
             <select
-              className="border border-gray-300 mr-3 ml-1 rounded leading-6 text-base"
+              className="border border-gray-300 px-2 mr-3 ml-1 rounded leading-6 text-base"
               name="Lang"
               id="lang"
               value={languageFilter}
@@ -85,7 +85,7 @@ export const HomeNews = () => {
               <option value="ES">ES</option>
             </select>
           </div>
-          <div className="flex font-normal">
+          <div className="flex font-normal items-center">
             <div className="leading-6 text-base">Show:</div>
             <select
               className="border border-gray-300 mr-3 ml-1 rounded leading-6 text-base"
@@ -99,7 +99,7 @@ export const HomeNews = () => {
               <option value={21}>21</option>
             </select>
           </div>
-          <div className="flex font-normal">
+          <div className="flex font-normal items-center">
             <div className="leading-6 text-base">Sort:</div>
             <select
               className="border border-gray-300 ml-1 rounded leading-6 text-base"
@@ -114,7 +114,7 @@ export const HomeNews = () => {
         </div>
       </div>
 
-      <div className="flex mx-40 gap-6 pt-8">
+      <div className="flex mx-40 gap-6 pt-4">
         <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6">
           {articles.map((article) => (
             <NewsCard key={article._id} article={article} />

@@ -13,23 +13,23 @@ export const NewsCard = ({article}) => {
   const formattedDate = formatDateToDDMMYYYY(new Date(article.date));
   
   return (
-    <div className="shadow-lg pt-1 pb-12 px-8">
+    <div className="shadow-lg drop-shadow-xl pt-1 pb-12 px-8">
       <div className="pt-5">
-        <img src={`http://localhost:3000/${article.image}`} className="rounded-lg w-full" alt="test" />
+        <img src={`http://localhost:3000/${article.image}`} className="rounded-lg w-full h-52" alt="test" />
       </div>
-      <div className="pt-8 text-yellow-500 text-sm uppercase bebas">Discover</div>
-      <div className="pt-10 text-gray-900 font-semibold text-2xl work">
+      <div className="pt-10 text-yellow-500 text-sm uppercase bebas">Discover</div>
+      <div className="pt-10 text-gray-900 font-semibold text-2xl work leading-8 h-40">
         {article.title}
       </div>
-      <div className="pt-5 text-gray-500 font-medium text-base leading-6 pr-4">
-        <p className="text-justify work text-base leading-6" style={{ overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical' }}>
+      <div className="pt-10 text-gray-500 font-medium text-base leading-6 pr-4">
+        <p className="text-justify work text-base leading-6  " style={{ overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical' }}>
           {article.content}
         </p>
       </div>
-      <div className="flex justify-between pt-3 text-lg text-gray-600">
+      <div className="flex justify-between bottom-0 pt-10 text-lg text-gray-600">
         <div className="text-base leading-6 work">{formattedDate}</div>
-        <div className="flex justify-center items-center text-blue-600">
-          <a href={`/details/${article._id}`} className="flex justify-center items-center text-blue-600 text-base leading-6 work">
+        <div className="flex justify-center items-center text-blue-600 leading-6">
+          <a href={`/details/${article._id}`} className="flex justify-center items-center text-blue-600 text-base leading-6 work gap-1">
             Read more
             <svg
               xmlns="http://www.w3.org/2000/svg"

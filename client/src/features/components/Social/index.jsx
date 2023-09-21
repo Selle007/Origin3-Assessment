@@ -10,7 +10,7 @@ import 'react-social-icons/twitter'
 
 export const Social = () => {
   return (
-    <div className="fixed top-1/2 right-0 mr-24 transform -translate-y-1/2 p-4">
+    <div className="fixed top-1/2 right-0 mr-16 transform -translate-y-1/2 p-4">
       <ul className="list-none p-0 m-0 flex flex-col gap-4">
         <li>
           <SocialIcon network="tiktok" bgColor="#000"  url="https://www.tiktok.com/@origin3agency"/>

@@ -28,7 +28,7 @@ app.use(
     extended: false,
   }),
 )
-// Serve static files from the uploads directory
+
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
 app.use(cors())
@@ -38,12 +38,6 @@ const newsAPI = require('./controllers/news.controller')
 
 // API
 app.use('/api', newsAPI)
-
-
-
-
-
-
 
 var corsOptions ={
     origin: "http://127.0.0.1:5173/",

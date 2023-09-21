@@ -3,8 +3,8 @@ import hero from "./assets/hero.png";
 import './Hero.css';
 export const Hero = () => {
   return (
-    <div className='flex justify-evenly items-center w-fit'>
-        <div className='pr-12'>
+    <div className='flex wrap justify-evenly items-center w-fit'>
+        <div>
             <p className='mb-4 welcome work text-gray-500'>WELCOME TO</p>
             <p className='bebas redtext'>THIS <br/> CHALLANGE </p>
             <br/>

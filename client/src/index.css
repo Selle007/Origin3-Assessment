@@ -3,57 +3,36 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: "Bebas Neue";
-  src: url("./app/assets/fonts/BebasNeue.ttf") format("ttf");
+  font-family: "Bebas Neue Regular";
+  src: url("./app/assets/fonts/BebasNeue-Regular.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Work Sans";
-  src: url("./app/assets/fonts/WorkSans.ttf") format("ttf");
+  src: url("./app/assets/fonts/WorkSans.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
 }
 
+@font-face {
+  font-family: "Rota";
+  src: url("./app/assets/fonts/Rota-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+
 .bebas {
-  font-family: "Bebas Neue", sans-serif;
+  font-family: "Bebas Neue Regular", sans-serif;
 }
 
 .work {
   font-family: "Work Sans", sans-serif;
 }
 
-.redtext {
-  font-size: 140px;
-  font-weight: 400;
-  line-height: 106px;
-  letter-spacing: 0px;
-  text-align: left;
-  color: #ff0000;
+.rota {
+  font-family: "Rota", sans-serif;
 }
 
-.textdown {
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 24px;
-  letter-spacing: 0em;
-  text-align: left;
-}
-
-.welcome {
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 18px;
-  letter-spacing: 0px;
-  text-align: left;
-}
-.welcome::before {
-  content: "";
-  display: inline-block;
-  width: 24px;
-  height: 1px; /* Adjust the height as needed */
-  background-color: #71717A; /* Adjust the color as needed */
-  margin-bottom: 4px; /* Adjust the spacing between the dash and text */
-  vertical-align: middle;
-}
